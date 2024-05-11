@@ -5,4 +5,5 @@ import Home from './Home';
 import Profile from './Profile';
 import Order from './Order';
 import Payment from './Payment';
-export{Payment,Opening, Register, Login, Home, Profile, Order}
+import History from './History';
+export{History,Payment,Opening, Register, Login, Home, Profile, Order}

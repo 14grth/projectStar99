@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {Payment,Opening, Login, Register, Home, Profile, Order} from '../pages';
+import {Payment,Opening, Login, Register, Home, Profile, Order, History} from '../pages';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -40,6 +40,11 @@ const index = () => {
       <Stack.Screen
         name="Payment"
         component={Payment}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="History"
+        component={History}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

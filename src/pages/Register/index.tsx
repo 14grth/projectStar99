@@ -8,12 +8,29 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-// import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
-// import {app} from '../../../config/firebase';
+import {createAccount} from '../../../config/firebase';
 import { Gap,TextInput,Button,PageHeader} from '../../components';
 import { Arrow } from '../../assets/icon';
+import {useNavigation} from '@react-navigation/native';
+import {getDatabase, set, ref} from 'firebase/database';
 
-const Register = ({navigation}) => {
+const Register = () => {
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const onPressRegister = async () => {
+    try {
+      await createAccount({email, password, name})
+      Alert.alert(
+        'You have successfully registered, You can login now',
+      );
+    } catch (error) {
+      Alert.alert('Registration failed', error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <PageHeader
@@ -23,20 +40,21 @@ const Register = ({navigation}) => {
       />
      
       <View style={styles.containerwrapper}>
+      <TextInput label="Username"placeholder="User Name" value={name} onChangeText={setName} />
       <TextInput
-          label="Username"
-          placeholder="Type your name here"
-        />
-      <Gap height={12} />
+      label="Email"
+        placeholder="E-mail"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
       <TextInput
-          label="Email"
-          placeholder="Type your email here"
-        />
-      <Gap height={12} />
-      <TextInput
-          label="Password"
-          placeholder="Type your password here"
-        />
+      label="Password"
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry={true}
+      />
       <Gap height={20} />
       <View style={styles.minicontainer}>
       <Text >Already have an account?   </Text>
@@ -47,6 +65,7 @@ const Register = ({navigation}) => {
       <Gap height={28} />
       <Button
            label="Sign Up"
+           onPress={onPressRegister}
         />
       </View>
     </View>

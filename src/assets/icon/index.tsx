@@ -10,4 +10,9 @@ import User from './user.svg'
 import Enter from './enter.svg'
 import Ordermenu from './ordermenu.svg'
 import Detailbutton from './detailbutton.svg'
-export {Detailbutton,Ordermenu,Enter, Logo, BackButton, Arrow, Homescreen, Headline, Homelogo, Orderlogo, Profilelogo, User};
+import Card from './Card.png'
+import Card2 from './Card2.png'
+import Nominal from './nominal.svg'
+import Unloadcard from './unloadcard.svg'
+import Unloadcardbig from './unloadcardbig.svg'
+export {Unloadcardbig, Nominal, Unloadcard,Card2,Card,Detailbutton,Ordermenu,Enter, Logo, BackButton, Arrow, Homescreen, Headline, Homelogo, Orderlogo, Profilelogo, User};

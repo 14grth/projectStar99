@@ -24,7 +24,7 @@ const Home = ({navigation}) => {
           <Gap height={23} />
           <Headline width={200} height={42} />
           <Homescreen width={421} height={510} />
-          <Button size={160} label="Check" />
+          <Button size={160} label="Check" onPress={() => navigation.navigate('History')} />
         </View>
         <Gap height={44} />
         <Text style={{fontSize: 34, color: 'black', fontWeight: '700'}}>

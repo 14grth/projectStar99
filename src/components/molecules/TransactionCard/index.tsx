@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Card } from 'react-native-elements';
 import { Detailbutton } from '../../../assets/icon';
@@ -19,7 +19,9 @@ const TransactionCard = ({Ordernum,tracknum,Date,quantity, total}) => {
       </View>
       <Gap height={16}/>
       <View style={styles.buttoncontent}>
-        <Detailbutton/>
+        <TouchableOpacity>
+          <Detailbutton/>
+        </TouchableOpacity>
         <Text style={{marginLeft:150, fontSize:17, color:'black'}}>
           Status
         </Text>

@@ -8,14 +8,10 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-// import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
-// import {app} from '../../../config/firebase';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import {app} from '../../../config/firebase';
 import { Gap,TextInput,Button,PageHeader} from '../../components';
-
-// import {Logo} from '../../assets';
-
-
-// const auth = getAuth(app);
+const auth = getAuth(app);
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,9 +23,8 @@ const Login = ({navigation}) => {
         password,
       );
       const user = userCredential.user;
-      navigation.navigate('Profile', {uid:user.uid})
       console.log('Logged in user:', user);
-      // navigation.replace('Homepage');
+      navigation.replace('Home');
     } catch (error) {
       console.log(error);
       Alert.alert('Login failure', error.message);
@@ -43,18 +38,23 @@ const Login = ({navigation}) => {
       />
       <View style={styles.containerwrapper}>
       <TextInput
-          label="Email"
-          placeholder="Type your email address"
-        />
-      <Gap height={12} />
+      label="Email"
+        placeholder="Email"
+        onChangeText={setEmail}
+        value={email}
+      />
+      <Gap height={22} />
       <TextInput
-          label="Password"
-          placeholder="Type your password address"
-        />
+        label="Password"
+        placeholder="Password"
+        onChangeText={setPassword}
+        value={password}
+        secureTextEntry
+      />
       <Gap height={36} />
       <Button
            label="LOGIN"
-          onPress={() => navigation.navigate('Home')}
+           onPress={onPressLogin}
         />
       </View>
     </View>
